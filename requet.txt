@@ -1,0 +1,153 @@
+Créer un freelance 
+mutation {
+  createFreelancer(input: {
+    nom: "Doe",
+    prenom: "John",
+    email: "john@example.com",
+    telephone: "12345678",
+    bio: "Développeur Web freelance avec 5 ans d'expérience"
+  }) {
+    id
+    nom
+    prenom
+    email
+    bio
+  }
+}
+********************************************
+Modifier un freelance
+mutation {
+  updateFreelancer(id: "ID_DU_FREELANCER", input: {
+    nom: "Doe",
+    prenom: "John",
+    email: "john.new@example.com",
+    telephone: "11112222",
+    bio: "Développeur Fullstack (React, Node)"
+  }) {
+    id
+    nom
+    prenom
+    email
+    telephone
+    bio
+  }
+}
+********************************************
+Supprimer un freelance 
+mutation {
+  deleteFreelancer(id: "ID_DU_FREELANCER")
+}
+***************************************************
+Ajouter une compétence
+mutation {
+  addSkill(freelancerId: "ID_DU_FREELANCER", input: {
+    nom: "GraphQL",
+    niveau: "Avancé"
+  }) {
+    id
+    skills {
+      id
+      nom
+      niveau
+    }
+  }
+}
+****************************************************
+ Supprimer une compétence
+mutation {
+  removeSkill(freelancerId: "ID_DU_FREELANCER", skillId: "ID_DE_LA_SKILL") {
+    id
+    skills {
+      id
+      nom
+    }
+  }
+}
+*****************************************
+Ajouter un lien professionnel
+mutation {
+  addLink(freelancerId: "ID_DU_FREELANCER", input: {
+    titre: "Portfolio",
+    url: "https://monportfolio.com"
+  }) {
+    id
+    links {
+      id
+      titre
+      url
+    }
+  }
+}
+****************************************************
+Supprimer un lien professionnel
+mutation {
+  removeLink(freelancerId: "ID_DU_FREELANCER", linkId: "ID_DU_LINK") {
+    id
+    links {
+      id
+      titre
+    }
+  }
+}
+************************************************************
+Lister tous les freelances
+query {
+  listFreelancers {
+    id
+    nom
+    prenom
+    email
+    telephone
+    bio
+    skills {
+      id
+      nom
+      niveau
+    }
+    links {
+      id
+      titre
+      url
+    }
+  }
+}
+****************************************************
+Récupérer un freelance par ID
+query {
+  getFreelancerById(id: "ID_DU_FREELANCER") {
+    id
+    nom
+    prenom
+    email
+    telephone
+    bio
+    skills {
+      id
+      nom
+      niveau
+    }
+    links {
+      id
+      titre
+      url
+    }
+  }
+}
+***************************************************************
+addCommunication
+mutation {
+  addCommunication(freelancerId: "ID_DU_FREELANCER", input: {
+    canal: "Email",
+    message: "Merci pour votre retour sur la mission.",
+    date: "2025-06-05"
+  }) {
+    id
+    nom
+    communications {
+      id
+      canal
+      message
+      date
+    }
+  }
+}
